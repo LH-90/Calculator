@@ -1,0 +1,80 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.913);
+}
+
+.calculator {
+  padding: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 20px;
+  background-color: rgb(238, 235, 238);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.orange {
+  background-color: rgb(253, 178, 65);
+}
+
+.equal {
+  background-color: rgb(253, 187, 65);
+}
+
+form input.equal {
+  width: 125px;
+}
+
+form input {
+  border: none;
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  background-color: rgb(255, 255, 255);
+  margin: 2px;
+  border-radius: 100px;
+  color: rgb(60, 59, 59);
+  cursor: pointer;
+}
+
+form input[type="button"]:hover {
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+form input.orange[type="button"]:hover {
+  background-color: rgb(253, 178, 65);
+  box-shadow: inset 0 0 15px rgb(255, 153, 0);
+}
+
+form input.equal[type="button"]:hover {
+  background-color: rgb(253, 178, 65);
+  box-shadow: inset 0 0 15px rgb(255, 153, 0);
+}
+
+form .screen {
+  display: flex;
+  justify-content: flex-end;
+}
+
+form .screen input {
+  outline: 2px solid rgba(126, 126, 126, 0.3);
+  outline-offset: 2px;
+  background-color: rgb(60, 59, 59);
+  color: rgb(255, 255, 255);
+  font-size: 35px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 1);
+  padding: 4px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  text-align: right;
+  flex: 1;
+  overflow-x: hidden;
+}
