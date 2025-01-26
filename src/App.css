@@ -5,12 +5,6 @@
   text-align: center;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.913);
-}
-
 .calculator {
   padding: 20px;
   padding-top: 40px;
@@ -20,19 +14,16 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
-.orange {
+.calculator .orange {
   background-color: rgb(253, 178, 65);
 }
 
-.equal {
+.calculator .equal {
   background-color: rgb(253, 187, 65);
-}
-
-form input.equal {
   width: 125px;
 }
 
-form input {
+.calculator input {
   border: none;
   width: 60px;
   height: 60px;
@@ -44,27 +35,23 @@ form input {
   cursor: pointer;
 }
 
-form input[type="button"]:hover {
+.calculator input[type="button"]:hover {
   background-color: rgb(255, 255, 255);
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-form input.orange[type="button"]:hover {
+.calculator input.orange[type="button"]:hover,
+.calculator input.equal[type="button"]:hover {
   background-color: rgb(253, 178, 65);
   box-shadow: inset 0 0 15px rgb(255, 153, 0);
 }
 
-form input.equal[type="button"]:hover {
-  background-color: rgb(253, 178, 65);
-  box-shadow: inset 0 0 15px rgb(255, 153, 0);
-}
-
-form .screen {
+.calculator .screen {
   display: flex;
   justify-content: flex-end;
 }
 
-form .screen input {
+.calculator .screen input {
   outline: 2px solid rgba(126, 126, 126, 0.3);
   outline-offset: 2px;
   background-color: rgb(60, 59, 59);
@@ -77,4 +64,5 @@ form .screen input {
   text-align: right;
   flex: 1;
   overflow-x: hidden;
+  cursor: default;
 }
