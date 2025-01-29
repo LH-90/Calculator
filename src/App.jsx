@@ -38,9 +38,22 @@ function App() {
       setIsResult(false);
     } 
 
-    else if (isNaN(buttonValue) && isNaN(value.slice(-1))) {
-      setValue(value.slice(0, -1) + buttonValue); // Replace the last operator
+    else if (buttonValue === "." && /[+\-x÷]/.test(value.slice(-1))) {
+      setValue(value + "0."); // Append "0." after an operator
+      setIsResult(false);
     }
+
+    else if (isNaN(buttonValue) && isNaN(value.slice(-1))) {
+      if (/[+\-x÷]/.test(value.slice(-1))) {
+        // Replace the last operator if the new input is also an operator
+        setValue(value.slice(0, -1) + buttonValue);
+      } else {
+        // Ignore replacing an operator with a number
+        setValue(value + buttonValue);
+      }
+    }   
+    
+    
     
     else {
       if (buttonValue === "." && (isNaN(value.slice(-1)) || value === "")) {
@@ -72,15 +85,33 @@ function App() {
   };
 
 
+  
   const handlePositiveNegative = () => {
-    if ((value<0) || (value>0)) {
-      setValue(`${-value}`)
-    }
-    else {
-      setValue("0")
-    }
-  }
+    const regex = /([+\-x÷])?(\(-?\d+(\.\d+)?\)|\d+(\.\d+)?%?)$/; // Match the last operator and the following number
+    const match = value.match(regex);
+    const operator = match[1] || ""; 
+    const number = match[2]; 
+  
+      if (number.endsWith("%")) {
+        const numberWithoutPercentage = parseFloat(number.slice(0, -1)); // Remove % 
+        if (number.startsWith("(-")) {
+          setValue(value.replace(regex, `${operator}${numberWithoutPercentage}%`));  // If negative, remove () and - and add %
+        } else {
+          setValue(value.replace(regex, `${operator}(-${numberWithoutPercentage}%)`));  // If positive, add () and - and add %
+        }
 
+      } else {
+        if (number.startsWith("(-")) {
+          const positiveValue = number.slice(2, -1); // If negative, remove () and -
+          setValue(value.replace(regex, `${operator}${positiveValue}`));
+        } else {
+          setValue(value.replace(regex, `${operator}(-${number})`));  // If positive, add () and -
+        }
+      }
+  };
+  
+  
+  
 
   const handleEqual = (expression) => {
 
