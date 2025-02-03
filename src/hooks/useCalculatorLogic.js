@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { calculate } from "../utils/utils";
+import calculate from "../utils/utils";
 
 
 function useCalculatorLogic() {
